@@ -1,0 +1,12 @@
+extends layout
+
+block body
+    h1
+        u= article.title
+    pre= article['created-formatted']
+    p.preformatted= article.body
+
+    hr
+
+    include comments
+        

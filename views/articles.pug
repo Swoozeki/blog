@@ -1,0 +1,11 @@
+extends layout
+
+block body
+    h1= title
+    - var page = 1;
+    while pagination-- > 0
+        a(href="/?page="+page) #{page++}/
+    each article in articles
+        h3
+            a(href=article.url)= article.title
+        p= article.excerpt

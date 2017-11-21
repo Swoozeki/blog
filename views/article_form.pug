@@ -1,0 +1,17 @@
+html
+    head
+        title= title
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    body
+        h1= title
+        form(action='/admin'+url, method="POST")
+            input#article-title(type="text", name="article-title", value=article?article.title:'', placeholder="title", required= true)
+            br
+            textarea#article-body(name="article-body", placeholder="type your article content here...", required= true) #{article?article.body:''}
+            hr
+            button(type="submit") Submit
+
+        if errors
+            ul#errors
+                each error in errors
+                    li(style="color: red")= error.msg

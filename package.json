@@ -1,0 +1,23 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "a blogging platform",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app",
+    "devstart": "nodemon app"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "express-validator": "^4.3.0",
+    "moment": "^2.19.2",
+    "mongoose": "^4.13.4",
+    "pug": "^2.0.0-rc.4"
+  },
+  "devDependencies": {
+    "morgan": "^1.9.0",
+    "nodemon": "^1.12.1"
+  }
+}

@@ -1,0 +1,18 @@
+form#comments(action=`/article/${article._id}/comment`, method="POST")
+    input(name="name", type="text", placeholder="Name", required= true)
+    br
+    input(name="email", type="email", placeholder="Email", required= true)
+    br
+    textarea(name="body", placeholder="enter comment here..." required= true)
+    br
+    button(type="submit") Submit
+
+    if errors
+        ul#errors
+            each error in errors
+                li(style="color: red")= error.msg
+
+    each comment in article.comments
+        p 
+            strong #{comment.name} :- 
+            | #{comment.body}

@@ -1,0 +1,22 @@
+doctype html
+html
+    head
+        title=title
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        block spreadsheets
+            link(rel="stylesheet", href="/stylesheets/index.css")
+    
+    body
+        .container
+            nav#blog-header
+                #social-media-links
+                    a#facebook(href="http://www.facebook.com") Facebook
+                    a#instagram(href="http://www.instagram.com") Instagram
+                #menu
+                    a#home(href="/") Home
+                    a#archives(href="/archives") Archives
+            #blog-body
+                block body
+            #blog-footer
+                hr
+                p Stay awesome, kids!

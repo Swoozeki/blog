@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+html, body{
+    height: 100%;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.container{
+    width: 650px;
+
+    font-family: 'Roboto Condensed', sans-serif;
+}
+#blog-body, #blog-footer{
+    padding: 0 20px;
+}
+#blog-header{
+    display: flex;
+    justify-content: space-between;
+}
+#blog-body{
+
+}
+#blog-footer{
+
+}
+#social-media-links, #menu{
+    display: flex;
+}
+#social-media-links a, #menu a{
+    text-decoration: none;
+    
+    padding: 10px;
+}
+#social-media-links a:hover, #menu a:hover{
+}
+
+.preformatted{
+    white-space: pre-wrap;
+}
