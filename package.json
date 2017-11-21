@@ -1,6 +1,9 @@
 {
   "name": "blog",
   "version": "1.0.0",
+  "engines": {
+    "node": "8.4.0"
+  },
   "description": "a blogging platform",
   "main": "app.js",
   "scripts": {
