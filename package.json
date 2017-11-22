@@ -7,8 +7,8 @@
   "description": "a blogging platform",
   "main": "app.js",
   "scripts": {
-    "start": "node app",
-    "devstart": "nodemon app"
+    "start": "node ./bin/www",
+    "devstart": "nodemon ./bin/www"
   },
   "author": "",
   "license": "ISC",

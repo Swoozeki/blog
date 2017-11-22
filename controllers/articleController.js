@@ -23,7 +23,6 @@ module.exports.articles_get = function(req, res, next){
 module.exports.archives_get = function(req, res, next){
     Article.find({}, 'title').sort({created: 'ascending'}).exec((err, articles) => {
         if(err){return next(err);}
-        console.log(articles);
         res.render('archives', {title: 'Archives', articles: articles});
     });
 }
