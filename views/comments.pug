@@ -1,9 +1,9 @@
+h3 Comments
 form#comments(action=`/article/${article._id}/comment`, method="POST")
-    input(name="name", type="text", placeholder="Name", required= true)
+    input(name="name", type="text", placeholder="Name", required=true)
+    input(name="email", type="email", placeholder="Email", required=true)
     br
-    input(name="email", type="email", placeholder="Email", required= true)
-    br
-    textarea(name="body", placeholder="enter comment here..." required= true)
+    textarea(name="body", placeholder="comment here...", required=true)
     br
     button(type="submit") Submit
 
