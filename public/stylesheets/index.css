@@ -10,7 +10,7 @@ body{
 }
 
 .container{
-    width: 650px;
+    max-width: 650px;
 
     font-family: 'Roboto Condensed', sans-serif;
 }
@@ -42,7 +42,7 @@ body{
     white-space: pre-wrap;
 }
 #comments textarea{
-    max-width: 600px;
+    max-width: 650px;
     width: 40%;
     height: 50px;
     transition: 0.5s;
