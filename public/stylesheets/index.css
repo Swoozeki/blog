@@ -10,10 +10,16 @@ body{
 }
 
 .container{
-    max-width: 650px;
+    width: 650px;
 
     font-family: 'Roboto Condensed', sans-serif;
 }
+@media(max-width: 650px){
+    .container{
+        width:100%;
+    }
+}
+
 #blog-body, #blog-footer{
     padding: 0 20px;
 }
