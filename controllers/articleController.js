@@ -5,17 +5,21 @@ module.exports.articles_get = function(req, res, next){
     const articlesPerPage = 2;
     const currentPage = req.query.page || 1;
 
+    //retrieve all article documents, and sort descending by their 'created' property
     Article.find({}).sort({created: 'descending'}).exec((err, articles) => {
         if(err){return next(err);}
-        let articlesInChunk = 0;
+        //split array into chunks of 'articlesPerPage'
         const chunked = articles.reduce((chunked, article, currentArticleIndex) => {
-            articlesInChunk = chunked[chunked.length-1].push(article); //returns length on which method was called
+            const articlesInChunk = chunked[chunked.length-1].push(article); //returns length on which method was called
             if(articlesInChunk === articlesPerPage && currentArticleIndex!==articles.length-1) 
                 chunked.push([]);
 
             return chunked;
         }, [[]]);
-        // return res.send(chunked);
+
+        if(currentPage > chunked.length){return next(new Error('Sorry, page does not exist!'));}
+
+        //passes a chunk pertaining to url query 'page'
         res.render('articles', {title: 'Articles', articles: chunked[currentPage-1], pagination: chunked.length});
     });
 }
