@@ -29,7 +29,8 @@ app.use(expressSession({
 app.use((req, res, next) => {
   if(req.app.get('env') === 'development') return next();
 
-  if(req.protocol === 'http') res.redirect('https://'+req.hostname+req.originalUrl);
+  if(req.protocol === 'http') return res.redirect('https://'+req.hostname+req.originalUrl);
+  next();
 });
 app.use(express.static(path.join(__dirname, 'public')));
 
