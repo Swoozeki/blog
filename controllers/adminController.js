@@ -2,12 +2,6 @@ const Article = require('../models/article');
 const Admin = require('../models/admin');
 const {validationResult} = require('express-validator/check');
 
-
-exports.login_get = function(req, res, next){
-    res.render('login', {title: 'Login'});
-    // res.send('You are now on login_get');
-}
-
 exports.login_post = function(req, res, next){
     const errors = validationResult(req);
 
@@ -17,7 +11,7 @@ exports.login_post = function(req, res, next){
         if(err){return next(err);}
 
         req.session.userId = user._id;
-        res.redirect('/admin/dashboard');
+        return res.redirect('/admin/dashboard');
     })
     // res.send('You are now on login_post');
 }
@@ -102,5 +96,5 @@ exports.require_login = function(req, res, next){
             return next();
         })
     }
-    else res.redirect('/admin');
+    else res.render('login', {title: 'Login'});
 }

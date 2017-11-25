@@ -3,7 +3,7 @@ const admin_controller = require('../controllers/adminController');
 const {body} = require('express-validator/check');
 const {sanitizeBody} = require('express-validator/filter');
 
-router.get('/', admin_controller.login_get);
+router.get('/', admin_controller.require_login, admin_controller.dashboard_get);
 router.post('/', admin_controller.login_post);
 router.get('/logout', admin_controller.logout_get);
 
