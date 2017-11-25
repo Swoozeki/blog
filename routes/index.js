@@ -15,9 +15,12 @@ router.post(
         body('name', 'name must not  be empty!').isLength({min: 1}),
         body('email', 'email must not be empty!').isLength({min: 1}),
         body('body', 'comment field must not be empty!').isLength({min: 1}),
-        sanitizeBody(['name', 'email', 'body']).trim()
+        sanitizeBody(['name', 'email', 'body']).escape().trim()
     ],
     article_controller.comment_post
 );
+
+const admin = require('./admin');
+router.use('/admin/', admin);
 
 module.exports = router;

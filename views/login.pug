@@ -1,0 +1,16 @@
+html
+    include head
+
+    body
+        h3= title
+        form#login(action="/admin", method="POST")
+            input(name="username", type="text", placeholder="username")
+            br
+            input(name="password", type="password", placeholder="password")
+            hr
+            button(type="submit") Submit!
+
+        if errors
+            ul#errors
+                each error in errors
+                    li(style="color: red")= error.msg

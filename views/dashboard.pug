@@ -1,0 +1,12 @@
+html
+    include head
+
+    body
+        h1 Hello, #{user.username}
+        h3 You are now on dashboard
+
+        ul
+            li
+                a(href="/admin/dashboard/articles/create") Create an article
+            li
+                a(href="/admin/logout") Logout

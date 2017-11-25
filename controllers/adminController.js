@@ -1,17 +1,39 @@
 const Article = require('../models/article');
+const Admin = require('../models/admin');
 const {validationResult} = require('express-validator/check');
 
 
 exports.login_get = function(req, res, next){
-    res.send('You are now on login_get');
+    res.render('login', {title: 'Login'});
+    // res.send('You are now on login_get');
 }
 
 exports.login_post = function(req, res, next){
-    res.send('You are now on login_post');
+    const errors = validationResult(req);
+
+    if(!errors.isEmpty()){return res.render('login',{title: 'Login', errors: errors});}
+
+    Admin.authenticate(req.body.username, req.body.password, (err, user) => {
+        if(err){return next(err);}
+
+        req.session.userId = user._id;
+        res.redirect('/admin/dashboard');
+    })
+    // res.send('You are now on login_post');
+}
+
+exports.logout_get = function(req, res, next){
+    if(req.session && req.session.userId){
+        req.session.destroy(err => {
+            if(err){return next(err);}
+            res.send('You are now logged out!');
+        });
+    }else res.send('You were not logged in to begin with!');
 }
 
 exports.dashboard_get = function(req, res, next){
-    res.send('You are now on dashboard_get');
+    res.render('dashboard', {title: 'Dashboard', user: req.user});
+    // res.send('You are now on dashboard_get');
 }
 
 exports.articles_get = function(req, res, next){
@@ -71,5 +93,14 @@ exports.delete_article_post = function(req, res, next){
 }
 
 exports.require_login = function(req, res, next){
-    next();
+    if(req.session && req.session.userId){
+        Admin.findById(req.session.userId).exec((err, user) => {
+            if(err){return next(err);}
+            if(!user){return next(new Error('Sorry, user does not exist!'));}
+            
+            req.user = user;
+            return next();
+        })
+    }
+    else res.redirect('/admin');
 }

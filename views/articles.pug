@@ -8,4 +8,4 @@ block body
     each article in articles
         h3
             a(href=article.url)= article.title
-        p= article.excerpt
+        p!= article['marked-excerpt']

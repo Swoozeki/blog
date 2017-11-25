@@ -15,4 +15,4 @@ form#comments(action=`/article/${article._id}/comment`, method="POST")
     each comment in article.comments
         p 
             strong #{comment.name} :- 
-            | #{comment.body}
+            | #{comment['escaped-comment-body']}

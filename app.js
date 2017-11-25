@@ -3,6 +3,8 @@ const app = express();
 const path = require('path');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
+const expressSession = require('express-session');
+const MongoStore = require('connect-mongo')(expressSession);
 
 //set up mongoose connection
 const mongoose = require('mongoose');
@@ -18,12 +20,15 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
+app.use(expressSession({
+  secret: 'cool cookie cat',
+  cookie: {httpOnly: true},
+  store: new MongoStore({mongooseConnection: db})
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 const index = require('./routes/index');
-const admin = require('./routes/admin');
 app.use('/', index);
-app.use('/admin', admin);
 
 //catch 404, and pass to error handler
 app.use(function(req, res, next) {

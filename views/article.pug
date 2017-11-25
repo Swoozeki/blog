@@ -4,7 +4,7 @@ block body
     h1
         u= article.title
     pre= article['created-formatted']
-    p.preformatted= article.body
+    p.preformatted!= article['marked-body']
 
     hr
 

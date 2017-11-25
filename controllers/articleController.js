@@ -2,7 +2,7 @@ const { validationResult } = require('express-validator/check');
 
 const Article = require('../models/article');
 module.exports.articles_get = function(req, res, next){
-    const articlesPerPage = 2;
+    const articlesPerPage = 3;
     const currentPage = req.query.page || 1;
 
     //retrieve all article documents, and sort descending by their 'created' property

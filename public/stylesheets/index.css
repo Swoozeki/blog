@@ -44,9 +44,6 @@ body{
 #social-media-links a:hover, #menu a:hover{
 }
 
-.preformatted{
-    white-space: pre-wrap;
-}
 #comments textarea{
     max-width: 650px;
     width: 40%;
@@ -56,4 +53,14 @@ body{
 #comments textarea:focus{
     width: 100%;
     height: 100px;
+}
+
+.preformatted{
+    white-space: pre-wrap;
+}
+
+hr{
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, black, white);
 }
