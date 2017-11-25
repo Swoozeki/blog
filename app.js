@@ -25,6 +25,12 @@ app.use(expressSession({
   cookie: {httpOnly: true},
   store: new MongoStore({mongooseConnection: db})
 }));
+//custom middleware to redirect client from http to https if needed
+app.use((req, res, next) => {
+  if(req.app.get('env') === 'development') return next();
+
+  if(req.protocol === 'http') res.redirect('https://'+req.hostname+req.originalUrl);
+});
 app.use(express.static(path.join(__dirname, 'public')));
 
 const index = require('./routes/index');
