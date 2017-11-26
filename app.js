@@ -7,12 +7,14 @@ const expressSession = require('express-session');
 const MongoStore = require('connect-mongo')(expressSession);
 
 //custom middleware to redirect client from http to https if needed
-app.use((req, res, next) => {
-  console.log(req._parsedUrl);
-  // if(req.app.get('env') === 'production' && req.protocol === 'http') 
-  //   return res.redirect('https://'+req.hostname+req.originalUrl);
-  next();
-});
+// app.use((req, res, next) => {
+//   console.log('This connection is secure: '+ req.secure);
+//   if(req.app.get('env') === 'production' && req.protocol === 'http') 
+//     return res.redirect('https://'+req.hostname+req.originalUrl);
+//   next();
+// });
+const sslRedirect = require('heroku-ssl-redirect');
+app.use(sslRedirect());
 
 //set up mongoose connection
 const mongoose = require('mongoose');
