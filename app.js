@@ -27,12 +27,19 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
-app.use(expressSession({
+
+const sessOptions = {
   secret: 'cool cookie cat',
   saveUninitialized: false,
   cookie: {httpOnly: true},
   store: new MongoStore({mongooseConnection: db})
-}));
+};
+if(app.get('env')==='production'){ //make sure cookie is secure in production
+  app.set('trust proxy', 1);
+  sessOptions.cookie.secure = true;
+}
+app.use(expressSession(sessOptions));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 const index = require('./routes/index');
