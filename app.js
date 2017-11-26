@@ -29,6 +29,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(expressSession({
   secret: 'cool cookie cat',
+  saveUninitialized: false,
   cookie: {httpOnly: true},
   store: new MongoStore({mongooseConnection: db})
 }));
