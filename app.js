@@ -6,6 +6,13 @@ const bodyParser = require('body-parser');
 const expressSession = require('express-session');
 const MongoStore = require('connect-mongo')(expressSession);
 
+//custom middleware to redirect client from http to https if needed
+app.use((req, res, next) => {
+  if(req.app.get('env') === 'production' && req.protocol === 'http') 
+    return res.redirect('https://'+req.hostname+req.originalUrl);
+  next();
+});
+
 //set up mongoose connection
 const mongoose = require('mongoose');
 const mongodb = 'mongodb://swoozeki:TargetLocked1@ds113566.mlab.com:13566/blog';
@@ -25,12 +32,6 @@ app.use(expressSession({
   cookie: {httpOnly: true},
   store: new MongoStore({mongooseConnection: db})
 }));
-//custom middleware to redirect client from http to https if needed
-// app.use((req, res, next) => {
-//   if(req.app.get('env') === 'production' && req.protocol === 'http') 
-//     return res.redirect('https://'+req.hostname+req.originalUrl);
-//   next();
-// });
 app.use(express.static(path.join(__dirname, 'public')));
 
 const index = require('./routes/index');
