@@ -26,11 +26,11 @@ app.use(expressSession({
   store: new MongoStore({mongooseConnection: db})
 }));
 //custom middleware to redirect client from http to https if needed
-app.use((req, res, next) => {
-  if(req.app.get('env') === 'production' && req.protocol === 'http') 
-    return res.redirect('https://'+req.hostname+req.originalUrl);
-  next();
-});
+// app.use((req, res, next) => {
+//   if(req.app.get('env') === 'production' && req.protocol === 'http') 
+//     return res.redirect('https://'+req.hostname+req.originalUrl);
+//   next();
+// });
 app.use(express.static(path.join(__dirname, 'public')));
 
 const index = require('./routes/index');
