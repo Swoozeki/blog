@@ -8,7 +8,7 @@ const MongoStore = require('connect-mongo')(expressSession);
 
 //custom middleware to redirect client from http to https if needed
 app.use((req, res, next) => {
-  console.log('The protocol right now is secure: '+req.secure);
+  console.log(req._parsedUrl);
   // if(req.app.get('env') === 'production' && req.protocol === 'http') 
   //   return res.redirect('https://'+req.hostname+req.originalUrl);
   next();
