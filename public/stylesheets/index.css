@@ -44,6 +44,17 @@ body{
     background-color: var(--primary-light-color);
     color: var(--primary-text-light-color);
 }
+#next{
+    background-color: var(--primary-dark-color);
+    color: var(--primary-text-dark-color);
+
+    box-shadow: var(--box-shadow-2);
+}
+#next:hover{
+    box-shadow: var(--box-shadow-3);
+    cursor: pointer;
+}
+
 html{
     height: 100%;
 }
@@ -52,7 +63,6 @@ body{
     justify-content: center;
     align-items: flex-start;
 }
-
 .container{
     width: 650px;
 
@@ -70,63 +80,26 @@ body{
     margin: 0;
     padding: 20px;
 }
-#content{
-    border: 0.1px solid transparent;
-}
-
 #blog-header{
     display: flex;
     justify-content: space-between;
-}
-
-#blog-body #content, #comments, #blog-footer{
-    padding: 0 20px;
-}
-#blog-body{
-
-}
-#blog-footer{
-    margin: 0;
-    padding: 20px;
 }
 #social-media-links, #menu{
     display: flex;
 }
 #social-media-links a, #menu a{
     text-decoration: none;
-    
     padding: 10px;
 }
 #social-media-links a:hover, #menu a:hover{
     
 }
 
-#next{
-    text-decoration: none;
-    border-radius: 50%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    height: 50px;
-    width: 50px;
-    margin: 0 20px;
-
-    position: relative;
-    top: 25px;
-
-    box-shadow: var(--box-shadow-2);
-    background-color: var(--primary-dark-color);
-    color: var(--primary-text-dark-color);
-    transition: 0.5s;
+#content{
+    border: 0.1px solid transparent;
 }
-#next:hover{
-    cursor: pointer;
-    box-shadow: var(--box-shadow-3);
-}
-#comments{
-    padding: 20px;
+#content, #comments{
+    padding: 0 20px;
 }
 #comments textarea{
     max-width: 650px;
@@ -138,6 +111,28 @@ body{
     width: 100%;
     height: 100px;
 }
+
+#blog-footer{
+    margin: 0;
+    padding: 20px;
+}
+#next{
+    text-decoration: none;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 50px;
+    width: 50px;
+    margin: 0 20px;
+    position: relative;
+    top: 25px;
+
+    transition: 0.5s;
+}
+
 img{
     max-width: 100%;
 }
