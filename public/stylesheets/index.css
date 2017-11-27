@@ -102,9 +102,13 @@ body{
 }
 
 #next{
-    border: none;
-    outline: none;
+    text-decoration: none;
     border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     height: 50px;
     width: 50px;
     margin: 0 20px;
@@ -133,6 +137,9 @@ body{
 #comments textarea:focus{
     width: 100%;
     height: 100px;
+}
+img{
+    max-width: 100%;
 }
 
 

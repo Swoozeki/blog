@@ -7,4 +7,4 @@ block body
                 a(href=article.url)= article.title
             span!= article['marked-excerpt']
     if next
-        button#next Next
+        a#next(href="?page="+next) Next
