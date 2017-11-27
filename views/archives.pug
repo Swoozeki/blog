@@ -1,7 +1,7 @@
 extends layout
 
 block body
-    h1= title
-    each article in articles
-        h3
-            a(href=article.url)= article.title
+    #content
+        each article in articles
+            h3
+                a(href=article.url)= article.title

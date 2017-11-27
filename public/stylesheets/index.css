@@ -1,12 +1,56 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
-html, body{
+:root{
+    --primary-color: #03a9f4;
+    --primary-light-color: #67daff;
+    --primary-dark-color: #007ac1;
+    --primary-text-color: #000;
+    --primary-text-light-color: #000;
+    --primary-text-dark-color: #fff;
+
+    --secondary-color: #3f51b5;
+    --secondary-light-color: #757de8;
+    --secondary-dark-color: #002984;
+    --secondary-text-color: #fff;
+    --secondary-text-light-color: #000;
+    --secondary-text-dark-color: #fff;
+
+    --box-shadow-1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    --box-shadow-2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    --box-shadow-3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    --box-shadow-4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    --box-shadow-5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+*{
+    color: inherit;
+    /* margin: 0;
+    padding: 0; */
+}
+body{
+    background-color: var(--primary-color);
+}
+.container{
+    background-color: #fff;
+    color: #000;
+
+    box-shadow: var(--box-shadow-1);
+}
+#blog-header{
+    background-color: var(--primary-dark-color);
+    color: var(--primary-text-dark-color);
+
+    /* box-shadow: var(--box-shadow-2); */
+}
+#title, #blog-footer{
+    background-color: var(--primary-light-color);
+    color: var(--primary-text-light-color);
+}
+html{
     height: 100%;
 }
-
 body{
     display: flex;
     justify-content: center;
-    align-content: center;
+    align-items: flex-start;
 }
 
 .container{
@@ -17,21 +61,33 @@ body{
 @media(max-width: 650px){
     .container{
         width:100%;
+        margin: 0;
     }
 }
 
-#blog-body, #blog-footer{
-    padding: 0 20px;
+/* margin-collapse controls */
+#title{
+    margin: 0;
+    padding: 20px;
 }
+#content{
+    border: 0.1px solid transparent;
+}
+
 #blog-header{
     display: flex;
     justify-content: space-between;
+}
+
+#blog-body #content, #comments, #blog-footer{
+    padding: 0 20px;
 }
 #blog-body{
 
 }
 #blog-footer{
-
+    margin: 0;
+    padding: 20px;
 }
 #social-media-links, #menu{
     display: flex;
@@ -42,8 +98,32 @@ body{
     padding: 10px;
 }
 #social-media-links a:hover, #menu a:hover{
+    
 }
 
+#next{
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    margin: 0 20px;
+
+    position: relative;
+    top: 25px;
+
+    box-shadow: var(--box-shadow-2);
+    background-color: var(--primary-dark-color);
+    color: var(--primary-text-dark-color);
+    transition: 0.5s;
+}
+#next:hover{
+    cursor: pointer;
+    box-shadow: var(--box-shadow-3);
+}
+#comments{
+    padding: 20px;
+}
 #comments textarea{
     max-width: 650px;
     width: 40%;
@@ -55,13 +135,4 @@ body{
     height: 100px;
 }
 
-.preformatted{
-    white-space: pre-wrap;
-}
 
-hr{
-    border: 0;
-    height: 1px;
-    background: #000;
-    background: linear-gradient(to right, black, white);
-}

@@ -1,5 +1,5 @@
 h3 Comments
-form#comments(action=`/article/${article._id}/comment`, method="POST")
+form(action=`/article/${article._id}/comment`, method="POST")
     input(name="name", type="text", placeholder="Name", required=true)
     input(name="email", type="email", placeholder="Email", required=true)
     br

@@ -1,12 +1,10 @@
 extends layout
 
 block body
-    h1
-        u= article.title
-    pre= article['created-formatted']
-    p.preformatted!= article['marked-body']
+    #content
+        pre= article['created-formatted']
+        span!= article['marked-body']
 
-    hr
-
-    include comments
+    #comments
+        include comments
         

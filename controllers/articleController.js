@@ -3,7 +3,7 @@ const { validationResult } = require('express-validator/check');
 const Article = require('../models/article');
 module.exports.articles_get = function(req, res, next){
     const articlesPerPage = 3;
-    const currentPage = req.query.page || 1;
+    const currentPage = parseInt(req.query.page) || 1;
 
     //retrieve all article documents, and sort descending by their 'created' property
     Article.find({}).sort({created: 'descending'}).exec((err, articles) => {
@@ -20,7 +20,7 @@ module.exports.articles_get = function(req, res, next){
         if(currentPage > chunked.length){return next(new Error('Sorry, page does not exist!'));}
 
         //passes a chunk pertaining to url query 'page'
-        res.render('articles', {title: 'Articles', articles: chunked[currentPage-1], pagination: chunked.length});
+        res.render('articles', {title: 'Articles', articles: chunked[currentPage-1], next: currentPage>=chunked.length?0:currentPage+1});
     });
 }
 
